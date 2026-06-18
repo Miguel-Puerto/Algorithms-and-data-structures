@@ -1,120 +1,125 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Node definition for the doubly linked list
+typedef struct Node {
+    int intValue;
+    struct Node* prev;
+    struct Node* next;
+} Node;
 
-
-// Definindo o nó da lista
-typedef struct No {
-    int valorINT;
-    struct No* anterior;
-    struct No* proximo;
-} No;
-
-// Definindo a estrutura da lista
+// List structure definition holding head and tail pointers
 typedef struct {
-    No* inicio;
-    No* fim;
-} Lista;
+    Node* head;
+    Node* tail;
+} DoublyLinkedList;
 
-// Inicializar a lista
-void iniciarLista(Lista* lista) {
-    lista->inicio = NULL;
-    lista->fim = NULL;
+// Initialize the list pointers to NULL
+void initList(DoublyLinkedList* list) {
+    list->head = NULL;
+    list->tail = NULL;
 }
 
-// Inserir no fim da lista
-void inserirFim(Lista* lista, int valorINT) {
-    No* novo = (No*)malloc(sizeof(No));
-    novo->valorINT = valorINT;
-    novo->proximo = NULL;
-    novo->anterior = lista->fim;
+// Append a new node to the end of the list
+void insertTail(DoublyLinkedList* list, int intValue) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    if (newNode == NULL) {
+        printf("Error: Memory allocation failed!\n");
+        exit(1);
+    }
+    newNode->intValue = intValue;
+    newNode->next = NULL;
+    newNode->prev = list->tail;
 
-    if (lista->fim != NULL)
-        lista->fim->proximo = novo;
+    if (list->tail != NULL)
+        list->tail->next = newNode;
     else
-        lista->inicio = novo;
+        list->head = newNode;
 
-    lista->fim = novo;
+    list->tail = newNode;
 }
 
-// Listar do início ao fim
-void listarInicio(Lista* lista) {
-    No* atual = lista->inicio;
-    while (atual != NULL) {
-        printf("%d ", atual->valorINT);
-        atual = atual->proximo;
+// Traverse and print the list from head to tail (Forward)
+void displayForward(DoublyLinkedList* list) {
+    Node* current = list->head;
+    while (current != NULL) {
+        printf("%d ", current->intValue);
+        current = current->next;
     }
     printf("\n");
 }
 
-// Listar do fim ao início
-void listarFim(Lista* lista) {
-    No* atual = lista->fim;
-    while (atual != NULL) {
-        printf("%d ", atual->valorINT);
-        atual = atual->anterior;
+// Traverse and print the list from tail to head (Backward)
+void displayBackward(DoublyLinkedList* list) {
+    Node* current = list->tail;
+    while (current != NULL) {
+        printf("%d ", current->intValue);
+        current = current->prev;
     }
     printf("\n");
 }
 
-// Remover um valor da lista
-void removerValor(Lista* lista, int valorINT) {
-    No* atual = lista->inicio;
+// Search and delete a node containing a specific value
+void removeValue(DoublyLinkedList* list, int intValue) {
+    Node* current = list->head;
 
-    while (atual != NULL && atual->valorINT != valorINT) {
-        atual = atual->proximo;
+    // Linear search for the node
+    while (current != NULL && current->intValue != intValue) {
+        current = current->next;
     }
 
-    if (atual == NULL) {
-        printf("Valor não encontrado.\n");
+    if (current == NULL) {
+        printf("Value not found.\n");
         return;
     }
 
-    if (atual->anterior != NULL)
-        atual->anterior->proximo = atual->proximo;
+    // Unlink the node from the previous side
+    if (current->prev != NULL)
+        current->prev->next = current->next;
     else
-        lista->inicio = atual->proximo;
+        list->head = current->next; // Node was the head
 
-    if (atual->proximo != NULL)
-        atual->proximo->anterior = atual->anterior;
+    // Unlink the node from the next side
+    if (current->next != NULL)
+        current->next->prev = current->prev;
     else
-        lista->fim = atual->anterior;
+        list->tail = current->prev; // Node was the tail
 
-    free(atual);
+    free(current);
 }
 
-// Função principal
 int main() {
-    Lista lista;
-    iniciarLista(&lista);
-    int x;
-    int y;
-    int a;
+    DoublyLinkedList list;
+    initList(&list);
+    int x, y, a;
 
-printf("DIGITE O VALOR DE X: ");
-scanf("%d", &x);
+    printf("ENTER VALUE FOR X: ");
+    if (scanf("%d", &x) != 1) return 1;
 
-printf("DIGITE O VALOR DE Y: ");
-scanf("%d", &y);
+    printf("ENTER VALUE FOR Y: ");
+    if (scanf("%d", &y) != 1) return 1;
 
-printf("DIGITE O VALOR DE A: ");
-scanf("%d", &a);
+    printf("ENTER VALUE FOR A: ");
+    if (scanf("%d", &a) != 1) return 1;
 
-    inserirFim(&lista, x);
-    inserirFim(&lista, y);
-    inserirFim(&lista, a);
+    insertTail(&list, x);
+    insertTail(&list, y);
+    insertTail(&list, a);
 
-    printf("\nListagem do início ao fim:\n");
-    listarInicio(&lista);
+    printf("\nForward traversal (Head to Tail):\n");
+    displayForward(&list);
 
-    printf("\nListagem do fim ao início:\n");
-    listarFim(&lista);
+    printf("\nBackward traversal (Tail to Head):\n");
+    displayBackward(&list);
 
-    printf("\nRemovendo o valor Y: %d", y);
-    removerValor(&lista, y);
+    printf("\nRemoving value Y: %d\n", y);
+    removeValue(&list, y);
 
-    printf("\nListagem atual: ");
-    listarInicio(&lista);
+    printf("Updated list layout: ");
+    displayForward(&list);
 
+    // Note: In a complete implementation, you should also write a 
+    // function to free the remaining nodes before exiting.
+    
     return 0;
 }
