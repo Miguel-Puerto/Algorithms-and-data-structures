@@ -1,45 +1,45 @@
-# Algoritmos e Estrutura de Dados em C
+# Data Structures and Algorithms in C
 
-Este repositório foi criado para organizar e consolidar os conceitos que aprendi em Ciência da Computação, documentando a minha evolução desde os fundamentos da lógica de programação e manipulação de arrays até a implementação de estruturas de dados dinâmicas e gerenciamento manual de memória em baixo nível.
-
----
-
-## Estrutura do Repositório
-
-O projeto está organizado em três grandes módulos que refletem a linha de aprendizado técnico:
-
-### [01-logica-e-arrays](./01-logica-e-arrays/)
-Focado em lógica estruturada e manipulação de memória estática.
-* `inversao-valores.c`: Lógica de ordenação e leitura inversa de sequências numéricas.
-* `jogo-mentalista.c`: Jogo interativo de adivinhação aplicando estruturas de repetição, condicionais compostas e cálculo de distância matemática (`abs`).
-* `matriz.c`: Operações e manipulação de dados bidimensionais.
-* `multiplicacao-vetor.c`: Algoritmos matemáticos e iteração em arrays unidimensionais.
-
-### [02-estruturas-compostas](./02-estruturas-compostas/)
-Introdução à modelagem de dados personalizada e funções utilitárias.
-* `cadastro-estudante-struct.c`: Sistema de cadastro utilizando `structs` para agrupamento de dados, manipulação segura de strings com `fgets` e geração de identificadores (RA) pseudoaleatórios baseados em tempo (`time.h`).
-
-### [03-estruturas-dinamicas](./03-estruturas-dinamicas/)
-O núcleo avançado do repositório. Demonstra o domínio sobre ponteiros, alocação dinâmica (`malloc`/`free`) e estruturas de dados encadeadas.
-* `lista-duplamente-ligada-aleatoria.c`: Uma evolução do algoritmo anterior, simulando testes automatizados através do sorteio aleatório de nós para remoção, controle de fluxo interativo e prevenção de vazamento de memória (*memory leaks*).
-* `lista-duplamente-ligada.c`: Implementação pura de uma lista bidirecional com operações de inserção, remoção e navegação em ambos os sentidos.
-* `arvores-binarias/`: Códigos voltados para estruturas de dados hierárquicas.
+This repository was built to organize and consolidate the core concepts learned throughout my Computer Science journey. It documents my progression from the fundamentals of structured programming logic and array manipulation to the implementation of complex dynamic data structures and low-level manual memory management.
 
 ---
 
-## Tecnologias e Conceitos Absorvidos
+## Repository Structure
 
-* **Linguagem:** C (Padrão ANSI)
-* **Gerenciamento de Memória:** Alocação dinâmica com ponteiros, `malloc`, `free` e boas práticas para evitar *Memory Leaks*.
-* **Modularização:** Criação de funções e passagem de parâmetros por valor e por referência.
-* **Ferramentas:** Compilador GCC e automação básica via terminal.
+The project is organized into three main modules that reflect my technical learning path:
+
+### [01-logic-and-arrays](./01-logic-and-arrays/)
+Focused on structured logic and static memory manipulation.
+* `value-inversion.c`: Logic for sorting and reverse reading of numerical sequences.
+* `mentalist-game.c`: An interactive guessing game applying loops, compound conditionals, and mathematical distance computation (`abs`).
+* `matrix.c`: Operations and manipulation of two-dimensional data arrays.
+* `vector-multiplication.c`: Mathematical algorithms and iteration over one-dimensional arrays.
+
+### [02-compound-structures](./02-compound-structures/)
+Introduction to custom data modeling and utility functions.
+* `student-registration-struct.c`: A registry system using `structs` for data grouping, secure string manipulation using `fgets`, and time-seeded pseudo-random Student ID generation (`time.h`).
+
+### [03-dynamic-structures](./03-dynamic-structures/)
+The advanced core of this repository. It demonstrates proficiency over pointers, manual dynamic allocation (`malloc`/`free`), and linked data structures.
+* `random-doubly-linked-list.c`: An evolution of the basic list layout, simulating automated testing through the randomized selection of nodes for deletion, an interactive terminal UI loop, and complete memory leak prevention.
+* `doubly-linked-list.c`: Pure implementation of a bidirectional list featuring insertion, deletion, and both forward and backward traversal operations.
+* `binary-trees/`: Source files dedicated to non-linear hierarchical data structures.
 
 ---
 
-## Como Compilar e Executar os Códigos
+## Key Concepts & Technologies Learned
 
-Certifique-se de ter um compilador GCC instalado em sua máquina.
+* **Language:** C (ANSI Standard)
+* **Memory Management:** Dynamic allocation utilizing pointers, `malloc`, `free`, and best practices to eliminate *Memory Leaks*.
+* **Modularization:** Function scoping and passing parameters by value vs. by reference.
+* **Tooling:** GCC Compiler usage and basic terminal-driven automation.
 
-1. Navegue até a pasta do arquivo desejado pelo terminal:
+---
+
+## How to Compile and Run
+
+Make sure you have a GCC compiler installed on your local machine.
+
+1. Navigate to the directory containing the file you wish to run via your terminal:
    ```bash
-   cd 03-estruturas-dinamicas
+   cd 03-dynamic-structures
