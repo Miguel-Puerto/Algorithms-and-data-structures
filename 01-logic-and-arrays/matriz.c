@@ -1,38 +1,38 @@
 #include <stdio.h>
 
-// Função para calcular o determinante de uma matriz 3x3
-int calcularDeterminante(int matriz[3][3]) {
-    return matriz[0][0] * (matriz[1][1] * matriz[2][2] - matriz[1][2] * matriz[2][1])
-         - matriz[0][1] * (matriz[1][0] * matriz[2][2] - matriz[1][2] * matriz[2][0])
-         + matriz[0][2] * (matriz[1][0] * matriz[2][1] - matriz[1][1] * matriz[2][0]);
+// Function to calculate the determinant of a 3x3 matrix
+int calculateDeterminant(int matrix[3][3]) {
+    return matrix[0][0] * (matrix[1][1] * matrix[2][2] - matrix[1][2] * matrix[2][1])
+         - matrix[0][1] * (matrix[1][0] * matrix[2][2] - matrix[1][2] * matrix[2][0])
+         + matrix[0][2] * (matrix[1][0] * matrix[2][1] - matrix[1][1] * matrix[2][0]);
 }
 
 int main() {
-    int matriz[3][3];
-    int determinante;
+    int matrix[3][3];
+    int determinant;
 
-    // Solicitar ao usuário para preencher a matriz
-    printf("Digite os valores para a matriz 3x3:\n");
+    // Prompt the user to fill the matrix
+    printf("Enter the values for the 3x3 matrix:\n");
 
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            printf("Elemento [%d][%d]: ", i, j);
-            scanf("%d", &matriz[i][j]);
+            printf("Element [%d][%d]: ", i, j);
+            scanf("%d", &matrix[i][j]);
         }
     }
 
-    // Imprimir a matriz
-    printf("\nMatriz 3x3:\n");
+    // Print the matrix
+    printf("\n3x3 Matrix:\n");
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            printf("%d ", matriz[i][j]);
+            printf("%d ", matrix[i][j]);
         }
         printf("\n");
     }
 
-    // Calcular e exibir o determinante
-    determinante = calcularDeterminante(matriz);
-    printf("\nDeterminante da matriz: %d\n", determinante);
+    // Calculate and display the determinant
+    determinant = calculateDeterminant(matrix);
+    printf("\nMatrix determinant: %d\n", determinant);
 
     return 0;
 }
