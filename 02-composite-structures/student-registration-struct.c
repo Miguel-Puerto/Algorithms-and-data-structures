@@ -3,40 +3,40 @@
 #include <string.h>
 #include <time.h>
 
-// Definição da estrutura para armazenar os dados do estudante
-struct Estudante {
-    int ra;
-    char nome[100];
-    char curso[50];
+// Structure definition to store student data
+struct Student {
+    int studentID;
+    char name[100];
+    char course[50];
 };
 
-// Função para gerar um RA aleatório entre 100000 e 999999
-int gerarRA() {
+// Function to generate a random Student ID between 100000 and 999999
+int generateStudentID() {
     return rand() % 900000 + 100000;
 }
 
 int main() {
-    struct Estudante p;
+    struct Student student;
 
-    // Inicializa a semente para geração de números aleatórios
+    // Initialize the seed for random number generation
     srand(time(NULL));
-    p.ra = gerarRA();
+    student.studentID = generateStudentID();
 
-    // Cadastro do nome do estudante
-    printf("Digite o nome do estudante: ");
-    fgets(p.nome, sizeof(p.nome), stdin);
-    p.nome[strcspn(p.nome, "\n")] = '\0';
+    // Register student's name
+    printf("Enter student name: ");
+    fgets(student.name, sizeof(student.name), stdin);
+    student.name[strcspn(student.name, "\n")] = '\0'; // Removes the trailing newline
 
-    // Cadastro do curso do estudante
-    printf("Digite o curso do estudante: ");
-    fgets(p.curso, sizeof(p.curso), stdin);
-    p.curso[strcspn(p.curso, "\n")] = '\0';
+    // Register student's course/major
+    printf("Enter student course: ");
+    fgets(student.course, sizeof(student.course), stdin);
+    student.course[strcspn(student.course, "\n")] = '\0'; // Removes the trailing newline
 
-    // Exibição dos dados cadastrados
-    printf("\n=== Estudante Cadastrado com Sucesso ===\n");
-    printf("RA: %d\n", p.ra);
-    printf("Nome: %s\n", p.nome);
-    printf("Curso: %s\n", p.curso);
+    // Display registered data
+    printf("\n=== Student Successfully Registered ===\n");
+    printf("Student ID: %d\n", student.studentID);
+    printf("Name:       %s\n", student.name);
+    printf("Course:     %s\n", student.course);
 
     return 0;
 }
